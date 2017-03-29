@@ -1,0 +1,37 @@
+<%= form_for(notification) do |f| %>
+  <% if notification.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(notification.errors.count, "error") %> prohibited this notification from being saved:</h2>
+
+      <ul>
+      <% notification.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :slack_channel %>
+    <%= f.text_field :slack_channel %>
+  </div>
+
+  <div class="field">
+    <%= f.label :slack_webhook %>
+    <%= f.text_field :slack_webhook %>
+  </div>
+
+  <div class="field">
+    <%= f.label :slack_username %>
+    <%= f.text_field :slack_username %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
