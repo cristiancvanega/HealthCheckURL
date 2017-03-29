@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  url: MyString
+  time: 1
+  name: MyString
+  message: MyString
+  health_code: 1
+
+two:
+  url: MyString
+  time: 1
+  name: MyString
+  message: MyString
+  health_code: 1
