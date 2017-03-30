@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/health_check_url
     docker:
-      - image: docker:13
+      - image: docker:1.13
     steps:
       - checkout
 
@@ -17,13 +17,21 @@ jobs:
             pip install awscli
 
       - run:
+          name: Get deploy script
+          command: |
+            aws configure set s3.signature_version s3v4
+            aws s3 cp s3://citytaxi-credentials/healthcheckurl/deploy.sh deploy.sh
+            chmod +x deploy.sh
+
+      - run:
           name: deploy
           environment:
             AWS_DEFAULT_REGION: us-east-1
-            REGISTRY: 141242979585.dkr.ecr.us-east-1.amazonaws.com
+            REGISTRY: 433207076761.dkr.ecr.us-east-1.amazonaws.com
             IMAGE: dw_api
-            STAGING_BRANCH: develop
+            STAGING_BRANCH: staging
             PRODUCTION_BRANCH: master
             DOCKER_TAG: "${CIRCLE_BUILD_NUM}"
+            SERVICE: "healthcheckurl"
           command: |
             ./deploy.sh ci
