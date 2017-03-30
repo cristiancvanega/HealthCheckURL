@@ -35,8 +35,9 @@ ActiveRecord::Schema.define(version: 20170329161002) do
     t.string   "name"
     t.string   "message"
     t.integer  "health_code"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "notification_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

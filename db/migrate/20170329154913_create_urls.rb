@@ -6,6 +6,7 @@ class CreateUrls < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :message
       t.integer :health_code
+      t.integer :notification_id
 
       t.timestamps
     end
