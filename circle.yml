@@ -1,0 +1,29 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/health_check_url
+    docker:
+      - image: docker:13
+    steps:
+      - checkout
+
+      - setup_docker_engine
+
+      - run:
+          name: Install aws-cli dependences.
+          command: |
+            curl -O https://bootstrap.pypa.io/get-pip.py
+            python get-pip.py
+            pip install awscli
+
+      - run:
+          name: deploy
+          environment:
+            AWS_DEFAULT_REGION: us-east-1
+            REGISTRY: 141242979585.dkr.ecr.us-east-1.amazonaws.com
+            IMAGE: dw_api
+            STAGING_BRANCH: develop
+            PRODUCTION_BRANCH: master
+            DOCKER_TAG: "${CIRCLE_BUILD_NUM}"
+          command: |
+            ./deploy.sh ci
