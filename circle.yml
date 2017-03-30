@@ -31,7 +31,7 @@ jobs:
           name: Get deploy script
           command: |
             aws configure set s3.signature_version s3v4
-            aws s3 cp s3://citytaxi-credentials/healthcheckurl/deploy.sh deploy.sh
+            aws s3 cp s3://citytaxi-credentials/healthcheckurl/healthcheckurl/deploy.sh deploy.sh
             chmod +x deploy.sh
 
       - run:
