@@ -32,7 +32,7 @@ jobs:
           environment:
             AWS_DEFAULT_REGION: us-east-1
             REGISTRY: 433207076761.dkr.ecr.us-east-1.amazonaws.com
-            IMAGE: dw_api
+            IMAGE: healthcheckurl
             STAGING_BRANCH: staging
             PRODUCTION_BRANCH: master
             DOCKER_TAG: "${CIRCLE_BUILD_NUM}"
