@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/health_check_url
     docker:
-      - image: golang:1.8
+      - image: cristiancvanega/aws-cli-docker
     steps:
       - checkout
 
@@ -19,13 +19,6 @@ jobs:
             chmod +x  /usr/bin/docker-compose
 
       - setup_docker_engine
-
-      - run:
-          name: Install aws-cli dependences.
-          command: |
-            curl -O https://bootstrap.pypa.io/get-pip.py
-            python get-pip.py 
-            pip install awscli --upgrade
 
       - run:
           name: Get deploy script
