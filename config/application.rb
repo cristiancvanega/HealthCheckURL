@@ -15,7 +15,7 @@ module Newapp
     config.after_initialize do
 
 	    scheduler = Rufus::Scheduler.new
-		scheduler.every '5s' do
+		scheduler.every '30s' do
 
 			urls = Url.all
 	    	urls.each do |uri|
